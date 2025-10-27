@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lash Agent</title>
+</head>
+<body>
+  <h2>Lash Business Agent</h2>
+  <input type="text" id="question" placeholder="Ask something..." />
+  <button onclick="ask()">Send</button>
+  <p id="response"></p>
+
+  <script>
+    async function ask() {
+      const question = document.getElementById("question").value;
+      const res = await fetch("http://localhost:5001/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question })
+      });
+      const data = await res.json();
+      document.getElementById("response").innerText = data.response;
+    }
+  </script>
+</body>
+</html>
