@@ -22,40 +22,83 @@ This proof of concept demonstrates how a solo lash artist can use AI to automate
 ## 🧱 Architecture
 [Frontend (HTML/JS)] → [Flask Backend] → [Agent Logic]
 
-- **Frontend**: Simple UI served via `http.server`
-- **Backend**: Flask app with modular intent handling
+- **Frontend**: HTML5, CSS3, JavaScript (Fetch API). Simple UI served via `http.server`
+- **Backend**: Python, Flask.
+- **Data**: CSV (Source) -> ETL Pipeline -> JSON (Runtime Database).
 - **Future**: Designed for integration with booking systems, SMS/email APIs, and time-based triggers
 
 ---
 
 ## 🚀 How to Run
 
-# Backend
+### Step 1: Open your terminal and clone the repository:
+
+git clone https://github.com/UniqueKishi/lashes-agent-poc.git
+
+cd lashes-agent-poc
+
+### Step 2: Set Up the Virtual Environment
+
+**For Mac/Linux:**
+
 cd backend
+
 python3 -m venv venv
+
 source venv/bin/activate
+
+**For Windows:**
+
+cd backend
+
+python -m venv venv
+
+venv\Scripts\activate
+
+### Step 3: Install Flask (the web server) and CORS (security handler):
+
 pip install flask flask-cors
+
+### Step 4: Initialize the Data (ETL Pipeline)
+
+Run this command inside the backend folder:
+
+python3 etl.py
+
+### Step 5: Start the Server
+
 python3 app.py
 
-# Frontend (in separate terminal)
-cd ..
-python3 -m http.server
+Success Message: Server started. Loaded X clients.
 
-Then open http://localhost:8000/index.html in your browser.
+### Step 6: Use the App!
+Leave the terminal running.
 
-##Business Value
+Go to the main folder and double-click index.html to open it in your browser.
+
+---
+
+### Business Value
 Lash artists often lose clients due to missed rebooking or poor aftercare. This agent helps:
+
 Increase rebooking rates with timely nudges
+
 Reduce complaints with proactive aftercare
+
 Build trust and retention through consistent communication
 
-##Future Vision
+### Future Vision
 In production, this agent would run automatically:
+
 Triggered 3 weeks after an appointment
+
 Integrated with a booking system (e.g., Square)
+
 Delivering messages via SMS or email (e.g. SendGrid)
+
 Built in Copilot Studio or Azure Logic Apps for no-code automation
 
+---
 
 Author
 Kishi Shobowale Business + Tech | Customer Success | Cloud Solution Architect (in progress)
