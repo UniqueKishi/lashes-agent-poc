@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lash Agent</title>
+  <style>
+    /* 1. The General Vibe (Pink & Clean) */
+    body { 
+      font-family: 'Segoe UI', sans-serif; 
+      background-color: #ffe6eb; /* Soft Pink Background */
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      height: 100vh; 
+      margin: 0;
+    }
+
+    /* 2. The "Card" (The white box) */
+    .chat-container {
+      background: white;
+      width: 400px;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    h2 { color: #d6336c; text-align: center; margin-top: 0; }
+
+    /* 3. The Response Area */
+    #response-area {
+      background-color: #f8f9fa;
+      height: 200px;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      overflow-y: auto;
+      border: 1px solid #eee;
+      color: #333;
+      white-space: pre-wrap; /* Keeps formatting nice */
+    }
+
+    /* 4. The Inputs */
+    .input-group { display: flex; gap: 10px; }
+    
+    input {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 25px;
+      outline: none;
+    }
+    input:focus { border-color: #d6336c; }
+
+    button {
+      background-color: #d6336c; /* Hot Pink */
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    button:hover { background-color: #a61e4d; }
+
+  </style>
+</head>
+<body>
+
+  <div class="chat-container">
+    <h2>✨ Lash Assistant</h2>
+    <div id="response-area">Hi! I'm your automated assistant. Ask me "Who needs a fill?" or "Who hasn't booked?"</div>
+    
+    <div class="input-group">
+      <input type="text" id="question" placeholder="Type here..." />
+      <button onclick="ask()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    async function ask() {
+      const questionInput = document.getElementById("question");
+      const responseArea = document.getElementById("response-area");
+      const question = questionInput.value;
+
+      responseArea.innerText = "Thinking..."; // Show user we are working
+
+      try {
+        const res = await fetch("http://127.0.0.1:5001/ask", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question })
+        });
+        const data = await res.json();
+        responseArea.innerText = data.response;
+      } catch (error) {
+        responseArea.innerText = "Error: Could not connect to the backend.";
+      }
+    }
+  </script>
+</body>
+</html>
+
+
