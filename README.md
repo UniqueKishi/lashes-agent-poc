@@ -53,11 +53,9 @@ Build trust and retention through consistent communication
 In production, this agent would run automatically:
 Triggered 3 weeks after an appointment
 Integrated with a booking system (e.g., Square)
-Delivering messages via SMS or email (e.g., Twilio, SendGrid)
+Delivering messages via SMS or email (e.g. SendGrid)
 Built in Copilot Studio or Azure Logic Apps for no-code automation
 
-Demo Video
-[Insert Loom or screen recording link here] Walkthrough of the working flows and business context
 
 Author
 Kishi Shobowale Business + Tech | Customer Success | Cloud Solution Architect (in progress)
